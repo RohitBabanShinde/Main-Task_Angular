@@ -1,0 +1,52 @@
+
+#card{
+  padding: 2rem;
+}
+h4{
+  color: #555;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+}
+.card-horizontal {
+  display: flex;
+  flex: 1 1 auto;
+  padding: 1rem;
+}
+.user{
+  text-align: center;
+}
+.user img{
+  width: 180px;
+  height: 180px;
+}
+.user button{
+  background: #222;
+  color: #f1f1f1;
+  border: none;
+  transition: all .3s ease;
+}
+.user button:hover{
+  background-color: transparent;
+  color: #222;
+  border: 1px solid #252925;
+}
+.photo_edit,
+.profile_edit{
+ padding: 5px;
+  text-align: left;
+  margin: 5px;
+
+}
+.btn:link,
+.btn:visited{
+  padding: 1rem 2rem;
+  background: #252925;
+  color: #f1f1f1;
+  font-size: 1rem;
+  transform: all .3s ease;
+}
+.btn:hover{
+  background-color: transparent;
+  border: 1px solid #252925;
+  color: #222;
+}

@@ -1,0 +1,147 @@
+
+body,
+input {
+  font-size: 1.6rem;
+  font-weight: 400;
+  font-family: "Archivo", sans-serif;
+  color: #222;
+}
+.container {
+  max-width: 117rem;
+  margin: 0 auto;
+  padding: 0 1.6rem;
+}
+h3,
+h4 {
+  font-weight: 500;
+}
+a{
+  text-decoration: none;
+}
+.maintask{
+  position: relative;
+  width: 100%;
+  padding: 4rem;
+  border-top: 1px solid #f1f1f1 ;
+  background-image: url(../../assets/Image/gmm.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: right;
+  background-color: #212529;
+}
+.maintask_content{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.maintask_data h3{
+  font-size: 2.2rem;
+  font-weight: inherit;
+  margin-bottom: 1rem;
+}
+.maintask_data p{
+  font-size: 1.3rem;
+  color: #252525;
+}
+.maintask_email {
+  font-size: 1.2rem;
+  display: inline-block;
+  width: 37rem;
+  padding: 1rem;
+  background-color: #f1f1f1 ;
+  border: none;
+  text-indent: 1rem;
+}
+.maintask_email:focus{
+  outline: none;
+}
+.maintask_link:link,
+.maintask_link:visited{
+  display: inline-block;
+  padding: 1rem 2rem;
+  margin-left: -0.5rem;
+  background-color: #222;
+  color: #fff;
+  transition: 0.3s;
+}
+.maintask_link:hover{
+  background-color: #000;
+}
+
+.bottom-footer{
+  padding: 10px;
+  background: #f1f1f1;
+}
+.main{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+}
+.category p{
+color: #222;
+text-align: center;
+}
+.category a{
+  color: #666;
+}
+.main input{
+  background: #f1f1f1;
+  width: 25rem;
+  padding: 9px;
+  border: 1px solid #222;
+  font-size: 16px;
+  margin-top: 10px;
+}
+.main input:focus{
+  outline: none;
+}
+.main i{
+  background-color: #000;
+}
+ .social-link
+{
+  margin-top: 5px;
+  display: flex;
+  position: relative;
+}
+.social-link .social_item img{
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+.social-link .social_item
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.7rem;
+  border: 1px solid #222;
+  border-radius: 50%;
+  transition: background-color 0.3s ease-in-out;
+  position: relative;
+}
+
+.social-link .social_item:link,
+.social-link .social_item:visited{
+  color: #222;
+}
+.social-link .social_item:hover{
+  background-color: #ccc;
+  border: 1px solid ;
+}
+
+.social-link .social_item:not(:last-child){
+  margin-right: 2rem;
+}
+.social-link .social_item #total{
+  font-size: 1rem;
+  position: absolute;
+  top: 2px;
+  right: -28px;
+  background-color: #555;
+  padding: 0.2rem 0.4rem;
+  border-radius: 100%;
+  color: #f1f1f1;
+}
+/* */
