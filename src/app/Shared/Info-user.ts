@@ -1,5 +1,5 @@
 export interface UserClass {
-  id?: string;
+  id: string;
 fname: string;
 lname: string;
 email: string;
@@ -12,4 +12,5 @@ address: string;
 address1: string;
 address2: string;
 ischeck: boolean;
+interests: [];
 }

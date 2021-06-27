@@ -87,7 +87,7 @@ Navigation
   display: inline-block;
   font-size: 1.4rem;
   text-transform: uppercase;
-  color: var(--black);
+  color: #222;
   transition: color .3s ease-in-out;
 }
 .nav_list .nav_item .nav_link:hover{

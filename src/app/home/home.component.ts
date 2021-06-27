@@ -1,5 +1,5 @@
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { MangageUserComponent } from './../User/mangage-user/mangage-user.component';
+import { MangageUserComponent } from './../User/manage-user/mangage-user.component';
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
@@ -11,21 +11,19 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private modalctr: NgbModal, private _router: Router, private dialog:MatDialog) { }
+  constructor(private modal: NgbModal, private router: Router) { }
 
   ngOnInit(): void {
   }
    onRegister() {
-     const modal = this.modalctr.open(MangageUserComponent, {size: 'lg'});
+     const modal = this.modal.open(MangageUserComponent,
+      {size: 'lg'});
      modal.componentInstance.id = null;
      modal.componentInstance.section = 'profile-data';
-    // console.log(modal.result);
      modal.result.then(result => {
       console.log(1);
       if (result.success) {
-        // console.log(2);
-        // console.log(result.id);
-       this._router.navigate([`/user-profile/${result.id}`]);
+       this.router.navigate([`/user-profile/${result.id}`]);
      }
      }, err => {
        console.log(err);

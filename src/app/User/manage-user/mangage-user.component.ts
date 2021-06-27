@@ -1,21 +1,13 @@
-import { CustomValidators } from './../../validator.service';
-import { UserService } from './../../user.service';
-import { UserClass } from './../../Shared/Info-user';
-import { Component, Input, OnInit } from '@angular/core';
+import { CustomValidators } from '../../validator.service';
+import { UserService } from '../../user.service';
+import { UserClass } from '../../Shared/Info-user';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material/chips';
-import { FormControl, FormGroupDirective, NgForm, Validators, FormGroup } from '@angular/forms';
-import { ErrorStateMatcher } from '@angular/material/core';
-
-export class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    const isSubmitted = form && form.submitted;
-    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
-  }
-}
-
+import { FormControl, Validators, FormGroup } from '@angular/forms';
+import { MatAutocomplete} from '@angular/material/autocomplete'
 
 @Component({
   selector: 'app-mangage-user',
@@ -24,24 +16,25 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 
 export class MangageUserComponent implements OnInit {
+  @Input() id;
+  image: string;
+  formData: FormGroup;
+  userDetailsedit: UserClass;
+  message: string;
+  public formSubmit = false;
   visible = true;
   selectable = true;
   removable = true;
   addOnBlur = true;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
-  imageError: string;
-  formData: FormGroup;
-  userDetailsedit: UserClass;
-  message: string;
-  interestList: string[] = [];
-  public formSubmit = false;
-
+  interests: string[]= [];
   constructor(public activeModal: NgbActiveModal, private _userservice: UserService, private _router: Router) {
   }
-  @Input() id;
-  ngOnInit() {
+  @ViewChild('auto') matAutocomplete:  MatAutocomplete;
+
+  ngOnInit(): void {
     this.formData = new FormGroup({
-      fname: new FormControl('', [Validators.required, CustomValidators.validateName]),
+      fname: new FormControl('', [Validators.required, CustomValidators.Name]),
       lname: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email]),
       mobile: new FormControl('', [Validators.required]),
@@ -53,7 +46,7 @@ export class MangageUserComponent implements OnInit {
       address2: new FormControl(''),
       interests: new FormControl("", Validators.required),
       image: new FormControl(null),
-      image1: new FormControl(null, CustomValidators.validateImage),
+      image1: new FormControl(null, CustomValidators.image),
       ischeck: new FormControl('', [Validators.required])
     });
 
@@ -62,10 +55,11 @@ export class MangageUserComponent implements OnInit {
     this.id = this._userservice.edit;
     if (this.id) {
       console.log(this.id);
-      this.getUpdatedUser();
+      this.formUpdate();
     }
   }
-  getUpdatedUser() {
+
+  formUpdate() {
     this._userservice.getUser(this.id).subscribe(data => {
       console.log(data);
       this.userDetailsedit = data[0];
@@ -77,8 +71,8 @@ export class MangageUserComponent implements OnInit {
       email: this.userDetailsedit.email,
       mobile: this.userDetailsedit.mobile,
       state: this.userDetailsedit.state,
-      country: this.userDetailsedit.country
-
+      country: this.userDetailsedit.country,
+      interests: this.userDetailsedit.interests
     });
   }
 
@@ -89,11 +83,10 @@ export class MangageUserComponent implements OnInit {
         this._userservice.userUpdate(this.formData.value, this.id).subscribe(data => {
           console.log(data);
           this.activeModal.close({ success: true, id: data.id });
-          this.getUpdatedUser();
-          this._router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
+          this.formUpdate();
+          this._router.navigateByUrl('/src/app/User/profile', { skipLocationChange: true }).then(() => {
             this._router.navigate(['user-profile']);
           });
-
           this._router.navigate(['/user-profile/']);
         }, err => {
           console.log(err);
@@ -110,17 +103,15 @@ export class MangageUserComponent implements OnInit {
         });
       }
     }
-
   }
 
 
   onFileSelected(event: Event) {
-    this.imageError = null;
+    this.image = null;
     window.URL = window.URL;
     const file = (event.target as HTMLInputElement).files[0];
     console.log(1);
     if (file) {
-
       this.formData.get('image1').patchValue(file.name);
       const img = new Image();
       img.src = window.URL.createObjectURL(file);
@@ -136,22 +127,19 @@ export class MangageUserComponent implements OnInit {
             console.log(width);
             console.log(height);
             this.formData.get('image').patchValue('../../../assets/Image/userprofile.png');
-            this.imageError = ('Please upload an image with in 310*325px resolution');
+            this.image = ('Please upload an image with in 310*325px resolution');
           }
           console.log('Width and Height', width, height);
         };
       };
-
       console.log(4);
       let readerr = new FileReader();
-      readerr.onload = this._handleReaderLoaded.bind(this);
+      readerr.onload = this.handleReaderLoaded.bind(this);
       readerr.readAsBinaryString(file);
     }
   }
 
-
-
-  _handleReaderLoaded(readerEvt) {
+  handleReaderLoaded(readerEvt) {
     console.log(5);
     let binaryString = readerEvt.target.result;
     this.formData.get('image').patchValue('data:image/png;base64,' + btoa(binaryString));
@@ -168,44 +156,24 @@ export class MangageUserComponent implements OnInit {
     );
   }
 
-  // add(event: MatChipInputEvent): void {
-  //   const input = event.input;
-  //   const value = event.value;
-
-  //   // Add our fruit
-  //   if ((value || '').trim()) {
-  //     this.interestList.push(value);
-  //     this.formData.patchValue({
-  //       interests: this.interestList
-  //     })
-  //   }
-
-  //   // Reset the input value
-  //   if (input) {
-  //     input.value = '';
-  //   }
-  // }
-
   add(event: MatChipInputEvent): void {
     const input = event.input;
     const value = event.value;
 
-    // Add our fruit
     if ((value || '').trim()) {
-      this.interestList.push(value);
+      this.interests.push(value);
     }
 
-    // Reset the input value
     if (input) {
       input.value = '';
     }
   }
 
   remove(item): void {
-    const index = this.interestList.indexOf(item);
+    const index = this.interests.indexOf(item);
 
     if (index >= 0) {
-      this.interestList.splice(index, 1);
+      this.interests.splice(index, 1);
     }
   }
 }

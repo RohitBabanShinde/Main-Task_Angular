@@ -41,39 +41,7 @@ export class UserService {
        retry(1),
        catchError(this.handleError)
      );
-   }
-
-  // apiURL = "const Url = ' http://localhost:3000"
-  // public edit: any[];
-  // constructor(private http: HttpClient){}
-  //  httpOptions = {
-  //    headers: new HttpHeaders({
-  //     'Content-Type':  'application/json',
-  //    })
-  //  }
-
-  //  userAdd():Observable<UserClass>{
-  //    return this.http.get<UserClass>(this.apiURL + '/user')
-  //    .pipe(
-  //      retry(1),
-  //      catchError(this.handleError)
-  //    )
-  //  }
-
-  //  getUser(id):Observable<UserClass>{
-  //    return this.http.get<UserClass>(this.apiURL + '/user' + id)
-  //    .pipe(
-  //      retry(1),
-  //      catchError(this.handleError)
-  //    )
-  //  }
-
-  //  userUpdate(id, UserClass):Observable<UserClass>{
-  //    return this.http.put<UserClass>(this.apiURL + '/user' + id, JSON.stringify(UserClass), this.httpOptions).pipe(
-  //      retry(1),
-  //      catchError(this.handleError)
-  //    );
-  //  }
+     }
 
    handleError(error){
      let errorMessage = '';

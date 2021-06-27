@@ -1,0 +1,55 @@
+
+ .modal-header{
+  background:#222;
+}
+
+.close{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  font-size: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all .3s ease;
+}
+.close:hover{
+  background: #ccc;
+}
+.submit
+{
+  background: #222;
+  color: #f1f1f1;
+}
+.example-chip-list{
+  width: 100%;
+}
+.mat-standard-chip {
+  min-height: 24px !important;
+ border-radius: none;
+}
+:host ::ng-deep .mat-chip {
+
+  border-radius: 4px;
+  padding: 5px;
+
+}
+.btn1, .btn2
+{
+  background: #000;
+  padding: 8px 15px;
+  color: #ffff;
+  margin-right: 10px;
+  font-size: 1rem;
+  transition: .3s ease;
+}
+.btn1:hover{
+  background: #f1f1f1;
+  color: #000;
+  border: 2px solid #000;
+}
+.btn2:hover{
+  background:#f1f1f1;
+  color: #000;
+  border: 2px solid #000;
+}

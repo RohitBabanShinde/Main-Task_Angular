@@ -1,5 +1,5 @@
 import { ProfileComponent } from './User/profile/profile.component';
-import { MangageUserComponent } from './User/mangage-user/mangage-user.component';
+import { MangageUserComponent } from './User/manage-user/mangage-user.component';
 import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
