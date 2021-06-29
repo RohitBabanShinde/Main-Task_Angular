@@ -1,14 +1,7 @@
 
-<carousel  [noPause]="false" [showIndicators]="false">
-  <ol class="carousel-indicators">
-    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    <li data-target="#myCarousel" data-slide-to="1"></li>
-    <li data-target="#myCarousel" data-slide-to="2"></li>
-  </ol>
+<carousel    [pauseOnFocus]="true"  [showIndicators]="false">
   <slide class="active">
-
     <img src="../../assets/Image/background 1 (2).jpg" alt="first slide" style="display: block; width: 100%;">
-
 <section class="hero">
   <div class="container">
     <div class="hero_content">
@@ -42,7 +35,7 @@
   </div>
   </section>
   </slide>
-  <slide>
+  <slide class="active">
     <img src="../../assets/Image/background 3 (2).jpg" alt="second slide" style="display: block; width: 100%;">
 
     <section class="hero">
@@ -78,7 +71,7 @@
       </div>
       </section>
   </slide>
-  <slide>
+  <slide class="active" >
     <img src="../../assets/Image/background 4.jpg" alt="third slide" style="display: block; width: 100%;">
 
     <section class="hero">
@@ -117,6 +110,7 @@
 </slide>
 
 </carousel>
+
 
 
 <div class="hero-main">

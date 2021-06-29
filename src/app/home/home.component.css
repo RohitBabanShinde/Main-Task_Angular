@@ -13,37 +13,26 @@
   ::ng-deep .carousel-control-next-icon::before{
   content: "\f105";
   }
-  :host ::ng-deep
-    .swiper.s-wrapper .swiper-pagination .swiper-pagination-handle .swiper-pagination-bullet.swiper-pagination-bullet-first {
-        border: none;
-    }
-    .swiper-pagination-bullet {
-            width: 12px;
-            height: 12px;
-            background: #fff;
-            opacity: unset;
-        }
 
-        .swiper-pagination-bullet-active {
-            background: #aeaeae;
-        }
+  .carousel-indicators  {
+    width : 20px!important;
+    height: 20px !important;
+    border-radius: 50% !important;
+    margin: 10px;
+  }
 
-  :root {
-    --primaryColor: #f1f1f1;
-    --black: #222;
-    --black2: #555;
-    --black3: #252525;
-    --black4: #000;
-    --black5: #212529;
-    --orange: #eb0028;
-    --white: #fff;
-    --grey: #959595;
-    --grey2: #666;
-    --grey3: #ccc;
-    --secondaryColor: #2b1f4d;
-    --yellow: #ffcc00;
-    --green: #59b210;
-    --blue: rgb(56, 10, 223);
+  .carousel-indicators  {
+    width : 20px!important;
+    background-color: black;
+    height: 20px !important;
+    border-radius: 50% !important
+  }
+
+  .carousel-indicators .active {
+    width : 20px !important;
+    background-color: yellow;
+    height: 20px !important;
+    border-radius: 50% !important
   }
 *{
   padding: 0;

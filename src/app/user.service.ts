@@ -34,7 +34,7 @@ export class UserService {
     );
    }
 
-   userUpdate(user, id): Observable<UserClass> {
+   userUpdate(id, user): Observable<UserClass> {
      console.log(`${Url}/user?id=` + id);
 
      return  this.http.put<UserClass>(`${Url}/user?id=` + id, user,httpOptions).pipe(

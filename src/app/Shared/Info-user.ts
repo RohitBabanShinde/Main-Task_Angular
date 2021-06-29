@@ -6,6 +6,7 @@ email: string;
 mobile: number;
 age: number;
 image: string;
+image1: string;
 state: string;
 country: string;
 address: string;

@@ -4,6 +4,7 @@ import { UserService } from './../../user.service';
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -13,28 +14,32 @@ export class ProfileComponent implements OnInit {
 
   id = null;
   profileImage: string;
-  usernamehere="freddi here";
-  public userDetails : UserClass;
-  constructor(private modal: NgbModal,private route: ActivatedRoute, private userService: UserService) {
+
+
+   userDetails : UserClass;
+  constructor(private modal: NgbModal,private route: ActivatedRoute, private userService: UserService, private _route:Router) {
     this.id = +this.route.snapshot.paramMap.get('id');
     }
 
   ngOnInit() {
-
-    console.log(this.id);
      this.userService.getUser(this.id).subscribe(data=>{
-      console.log(data);
-
       this.userDetails=data[0];
   })
 }
+
+imageEdit(){
+  this.userService.getUser(this.id).subscribe(data => {
+
+  })
+}
+
   profileEdit() {
     const modal= this.modal.open(MangageUserComponent,{size: 'lg'});
     modal.componentInstance.id=null;
     modal.componentInstance.section='profile-data';
-
-    this.userService.edit=this.id;
-
+    this.userService.edit = this.id;
+    // this.userService.getUser(this.userService).subscribe(data => {
+    //   this._route.navigate(['/manage-user']);
+    // })
    }
-
 }
